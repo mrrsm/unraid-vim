@@ -7,16 +7,19 @@
 <!ENTITY pluginLOC "/boot/config/plugins/&name;">
 <!ENTITY emhttpLOC "/usr/local/emhttp/plugins/&name;">
 ]>
+
 <PLUGIN
-name="&name;"
-author="&author;"
-version="&version;"
-pluginURL="&pluginURL;"
-icon="pencil-square"
-min="6.9.0"
-support="https://github.com/mrrsm/unraid-vim/issues"
-project="https://github.com/mrrsm/unraid-vim/"
-readme="https://github.com/mrrsm/unraid-vim/blob/main/README.md">
+  name="&name;"
+  author="&author;"
+  version="&version;"
+  pluginURL="&pluginURL;"
+  icon="pencil-square"
+  min="6.9.0"
+  support="https://github.com/mrrsm/unraid-vim/issues"
+  project="https://github.com/mrrsm/unraid-vim/"
+  readme="https://github.com/mrrsm/unraid-vim/blob/main/README.md"
+>
+
 <CHANGES>
 <![CDATA[
 ###2026.02.14###
@@ -25,15 +28,12 @@ readme="https://github.com/mrrsm/unraid-vim/blob/main/README.md">
 </CHANGES>
 
 <FILE Name="/boot/config/plugins/vim/vim-8.2.4256-x86_64-1.txz" Run="upgradepkg --install-new">
-<URL>
-https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64/ap/vim-8.2.4256-x86_64-1.txz</URL>
+<URL>https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64/ap/vim-8.2.4256-x86_64-1.txz</URL>
 <SHA256>22d23d2b1dbd20764280557ebdefb82da4d15017804051b0406def5017c58b5b</SHA256>
 </FILE>
 
-<FILE Name="/boot/config/plugins/vim/libsodium-1.0.18-x86_64-3.txz"
-Run="upgradepkg --install-new">
-<URL>
-https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64/l/libsodium-1.0.18-x86_64-3.txz</URL>
+<FILE Name="/boot/config/plugins/vim/libsodium-1.0.18-x86_64-3.txz" Run="upgradepkg --install-new">
+<URL>https://mirrors.slackware.com/slackware/slackware64-15.0/slackware64/l/libsodium-1.0.18-x86_64-3.txz</URL>
 <SHA256>bfd654a4addc679b287a0d94674969f73b93218fcbbe4f578b65a68c214ddd0a</SHA256>
 </FILE>
 
@@ -62,6 +62,7 @@ removepkg libsodium;
 # Remove possible leftovers
 rm -rf /usr/local/emhttp/plugins/vim;
 rm -rf /boot/config/plugins/vim;
+
 ]]>
 </INLINE>
 </FILE>
