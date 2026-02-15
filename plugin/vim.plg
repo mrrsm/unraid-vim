@@ -14,7 +14,7 @@
   version="&version;"
   pluginURL="&pluginURL;"
   icon="pencil-square"
-  min="6.9.0"
+  min="7.2.3"
   support="https://github.com/mrrsm/unraid-vim/issues"
   project="https://github.com/mrrsm/unraid-vim/"
   readme="https://github.com/mrrsm/unraid-vim/blob/main/README.md"
