@@ -1,0 +1,42 @@
+name: Weekly package update
+
+on:
+  schedule:
+    # Every Monday 11:37 UTC (avoids the top-of-the-hour CI spike)
+    - cron: "37 11 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-package-update
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Refresh Slackware + libagentcrypt pins
+        run: python3 .github/scripts/update-plugin-packages.py
+
+      - name: Detect plugin changes
+        id: plugin
+        run: |
+          if git diff --quiet -- plugin/vim.plg; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.plugin.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "noreploy@mrrsm.com"
+          git add plugin/vim.plg
+          git commit -F .github/commit-message.txt
+          git push
